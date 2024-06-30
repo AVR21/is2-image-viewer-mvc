@@ -25,16 +25,19 @@ public class FileImageLoader implements ImageLoader{
         return new Image() {
             @Override
             public String name() {
+                assert files != null;
                 return files[i].getAbsolutePath();
             }
 
             @Override
             public Image next() {
+                assert files != null;
                 return imageAt((i+1) % files.length);
             }
 
             @Override
             public Image prev() {
+                assert files != null;
                 return imageAt((i-1+ files.length) % files.length);
             }
         };
